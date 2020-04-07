@@ -19,8 +19,7 @@ const filters = {
   },
   funky(letter) {
 		// check if there is a funky letter for the character
-		const funkyLetter = funkyLetters[letter]
-		console.log(funkyLetter);
+		let funkyLetter = funkyLetters[letter]
 		if(funkyLetter) return funkyLetter;
 		// if there's not, check to see if there's a lowercase version
 		funkyLetter = funkyLetters[letter.toLowerCase()];
@@ -28,7 +27,16 @@ const filters = {
 		// if nothing, return regular letter
 		return letter;
 	},
-  unable(letter, index) {},
+  unable(letter) {
+		// find a random number between 0-2
+		const random = Math.floor(Math.random() * 3);
+		// if letter is space and random number is 2
+		if(letter === ' ' && random === 2) {
+			return '...';
+		}
+		// otherwise return letter
+		return letter;
+	},
 };
 
 
